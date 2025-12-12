@@ -1,6 +1,6 @@
 import "dotenv/config"
 import express, { type Request, type Response } from "express";
-import { validateShortURL } from "./urlValidator";
+import { validateShortURL } from "./urlValidator.js";
 
 const app = express();
 
