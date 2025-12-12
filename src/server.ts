@@ -1,0 +1,9 @@
+import app from "./app";
+
+const PORT = process.env.PORT ? Number(process.env.PORT) : 3333
+
+const server = app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT} 🎉`)
+})
+
+export default server;
