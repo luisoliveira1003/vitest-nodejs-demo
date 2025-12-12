@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // ========== Target e Runtime ==========
+    "target": "ES2021",                    // Versão moderna, estável e amplamente suportada
+    "module": "NodeNext",                  // Melhor opção para Node.js moderno (ESM + CommonJS)
+    "lib": ["ES2021"],  // APIs modernas amplamente suportadas
+    "moduleResolution": "NodeNext",        // Configurado automaticamente pelo module
+    
+    // ========== Performance e Build ==========
+    "incremental": true,                   // Compilação incremental para builds mais rápidos
+    "skipLibCheck": true,                  // Pula checagem de types em .d.ts para performance
+    "tsBuildInfoFile": "./dist/.tsbuildinfo", // Local do cache de build incremental
+    
+    // ========== Paths e Estrutura ==========
+    "baseUrl": "./",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@application/*": ["./src/application/*"],
+      "@config/*": ["./src/config/*"],
+      "@utils/*": ["./src/application/utils/*"],
+      "@dto/*": ["./src/application/dto/*"],
+      "@interfaces/*": ["./src/application/interfaces/*"],
+      "@services/*": ["./src/application/services/*"],
+      "@entities/*": ["./src/domain/entities/*"],
+      "@gateway/*": ["./src/gateway/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@presentation/*": ["./src/presentation/*"],
+      "@enum/*": ["./src/domain/enum/*"],
+      "@enums/*": ["./src/application/enums/*"],
+      "@contracts/*": ["./src/application/services/contracts/*"],
+      "@test/*": ["./test/*"]
+    },
+    
+    // ========== Strict Type Checking ==========
+    "strict": true,                        // Ativa todas as verificações rigorosas
+    "noUncheckedIndexedAccess": true,      // Força checagem de undefined em acessos indexados
+    "noImplicitOverride": true,            // Requer palavra-chave override explícita
+    "noImplicitReturns": true,             // Todas as funções devem ter return explícito
+    "noFallthroughCasesInSwitch": true,    // Previne fallthrough em switch cases
+    "allowUnreachableCode": false,         // Erro para código inacessível
+    "noErrorTruncation": true,             // Mensagens de erro completas
+    
+    // Opções menos restritivas (pode habilitar gradualmente)
+    "exactOptionalPropertyTypes": false,   // Propriedades opcionais podem ser undefined
+    "noPropertyAccessFromIndexSignature": false, // Permite acesso direto a propriedades dinâmicas
+    
+    // ========== Module System ==========
+    "esModuleInterop": true,               // Interoperabilidade ES/CommonJS
+    "allowSyntheticDefaultImports": true,  // Permite imports default sintéticos
+    "forceConsistentCasingInFileNames": true, // Força consistência nos nomes de arquivos
+    "resolveJsonModule": true,             // Permite import de arquivos JSON
+    "moduleDetection": "auto",             // Detecção automática de módulos (mais flexível)
+    "isolatedModules": true,               // Compatibilidade com transpilers externos
+    
+    // ========== Output e Debugging ==========
+    "sourceMap": true,                     // Gera source maps para debugging
+    "declaration": true,                   // Gera arquivos .d.ts
+    "declarationMap": true,                // Source maps para declarações
+    "removeComments": false,               // Mantém comentários no output
+    "newLine": "lf",                       // Line endings Unix
+    
+    // ========== Experimentais e Features Avançadas ==========
+    "experimentalDecorators": true,        // Suporte a decorators
+    "emitDecoratorMetadata": true,         // Metadados para decorators
+    "allowImportingTsExtensions": false,   // Para compilação normal
+    "noEmitOnError": true,                 // Não emite arquivos se houver erros
+    
+    // ========== Code Quality ==========
+    "noUnusedLocals": false,               // Configurable - pode causar ruído durante desenvolvimento  
+    "noUnusedParameters": false,           // Configurable - pode causar ruído durante desenvolvimento
+    "useUnknownInCatchVariables": true     // Usa 'unknown' em catch blocks
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "**/*.spec.js",
+    "**/*.test.js",
+    "coverage",
+    "jest.config.*"
+  ],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}
